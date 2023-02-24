@@ -7,54 +7,34 @@ package HW_3;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Task_1 {
     public static void main(String[] args) {
 
-        Scanner userInput  = new Scanner(System.in); 
-        System.out.print("Введите число (длина массива): ");
-        int numLen= userInput.nextInt();
-        System.out.print("Введите число (максимальное число в массиве): ");
-        int numMax = userInput.nextInt();
-       
-        Random ran = new Random();
-        int[] array = new int[numLen];
-        for (int i = 0; i < array.length; i++) {
-        array[i] = ran.nextInt(numMax);
-        }
+            Scanner userInput  = new Scanner(System.in); 
+            System.out.print("Введите число (длина массива): ");
+            int numLen= userInput.nextInt();
+            System.out.print("Введите число (максимальное число массива): ");
+            int numMax = userInput.nextInt();
 
-        System.out.println(Arrays.toString(array)); 
-        findMaxNum(array, numMax);
-        arithmeticMean(array);
-    }
-
-    private static void findMaxNum(int[] arr, int args){
-        int max = 0;
-        int min = args;
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] > max){
-                max = arr[i];
+            Random ran = new Random();
+            int[] array = new int[numLen];
+            for (int i = 0; i < array.length; i++) {
+            array[i] = ran.nextInt(numMax);
             }
-        if (arr[i] < min){
-             min = arr[i];
-        }    
+            System.out.println(Arrays.toString(array)); 
+            removingOddNumber(array);
         }
-        System.out.println("Max = " + max);  
-        System.out.println("Min = " + min);  
-    }    
+        private static void removingOddNumber(int[] array) {
 
-private static void arithmeticMean(int[] array) {
-    int count = 0;
-    double summ = 0;
-    double arifMean;
-    for (int i = 0; i < array.length; i++) {
-    summ = summ + array[i]; 
-    count ++;
-    }
-    arifMean = summ / count;
-    System.out.println("Сумма = " + summ);
-    System.out.println("Количество = " + count);
-    
-    System.out.println("Среднее арифметическое = " + arifMean);
-}
+            List<Integer> resArr = new ArrayList<Integer>();
+            for (int i = 0; i < array.length; i++) {
+                if (array[i]%2 == 0){
+                resArr.add(array[i]);
+                }
+            }
+            System.out.println(resArr);
+    } 
 }
